@@ -4,7 +4,7 @@ export STUDENTCLUSTERNAME='k8s-training-cluster'
 export STUDENTREGION='us-central1'
 export STUDENTCLUSTER_MIN_NODES='2'
 export STUDENTCLUSTER_MAX_NODES='3'
-export STUDENTCLUSTER_VERSION='1.14.10-gke.27'
+export STUDENTCLUSTER_VERSION='1.14.10-gke.36'
 
 if [ -z "$STUDENTPROJECTNAME" ]; then
   export STUDENTPROJECTNAME='<Add-Project-Name>'
@@ -28,11 +28,11 @@ kubectl apply -f helm-rbac/helm-rbac.yaml
 helm2 init --service-account tiller
 
 ### Wait for tiller pod to be ready
-sleep 30
+sleep 60
 
 helm2 install --namespace kube-system --name nginx-ingress stable/nginx-ingress --set controller.service.externalTrafficPolicy=Local,controller.service.loadBalancerIP=$STUDENTCLUSTERSIP
 
-helm2 install --name Helm-Charts/mailbox-service/
+helm2 install --name mailbox-service Helm-Charts/mailbox-service/
 helm2 install --name connectivity-check Helm-Charts/connectivity-check/
 helm2 install --name server-health Helm-Charts/server-health/
 

@@ -32,6 +32,8 @@ sleep 60
 
 helm2 install --namespace kube-system --name nginx-ingress stable/nginx-ingress --set controller.service.externalTrafficPolicy=Local,controller.service.loadBalancerIP=$STUDENTCLUSTERSIP
 
+kubectl create secret docker-registry privateregistrycreds --docker-username test --docker-password test
+
 helm2 install --name mailbox-service Helm-Charts/mailbox-service/
 helm2 install --name connectivity-check Helm-Charts/connectivity-check/
 helm2 install --name server-health Helm-Charts/server-health/

@@ -1,1 +1,1 @@
-![cover page](cover.jpg)
+![cover page](praetorian-cover.png)

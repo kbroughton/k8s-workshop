@@ -1,10 +1,13 @@
 # Attacking & Auditing Docker Containers & Kubernetes Clusters - Agenda
 
+<span style="color:red">Red</span> - Covered in class. We will replace some based on Phase II attacks.<br>
+<span style="color:orange">Orange</span> - Assumed knowledge. May cover a few on request.
+
 * Introduction
     * About the trainer
     * Disclaimer
     * Agenda
-* Environment Setup
+* <span style="color:red">Environment Setup</span>
     * Importing Virtual Machines
     * SSH into machines from your host
     * Common troubleshooting steps
@@ -17,7 +20,7 @@
     * docker volumes and networks
     * docker swarm
     * Portainer
-* Attacking Insecure Volume Mounts
+* <span style="color:red">Attacking Insecure Volume Mounts</span>
     * Scenario
     * Solution
 * Learning More about
@@ -35,19 +38,19 @@
     * Docker volumes and networks
     * Scenario
     * Solution
-* Docker integrity checks
+* <span style="color:red">Docker integrity checks</span>
 * amicontained - Introspection tool
 * Attacking & Auditing Docker Runtime & Registries
     * Docker runtime endpoints
     * Docker registries
-* Attacking container capabilities
+* <span style="color:red">Attacking container capabilities</span>
     * Scenario
     * Solution
 * Linux Security Module - Apparmor nginx profile
 * Attacking swarm cluster secrets
     * Scenario
     * Solution
-* Attacking private registry images
+* <span style="color:red">Attacking private registry images (Customize)</span>
     * Scenario
     * Solution
 * Docker bench security audit
@@ -55,21 +58,21 @@
     * Docker logging
     * Docker Events
     * Sysdig Faclo
-* Kubernetes Environment Setup
+* <span style="color:red">Kubernetes Environment Setup</span>
     * Import VM
     * Internet Check
     * Configure kubectl
-* Kubernetes 101
+* <span style="color:orange">Kubernetes 101</span>
     * Getting Started with Kubernetes
     * Introduction to Kubernetes
     * Kubernetes Overview
     * The Illustrated Children's Guide to Kubernetes
     * Understanding Kubernetes specific technical terms
     * kubectl usage for pentesters
-* Deploying simple application in Kubernetes Cluster
+* <span style="color:red">Deploying simple application in Kubernetes Cluster</span>
     * Using yaml manifest
     * Using helm chart
-* Scenario-1 - Exploiting Private Registry via Misconfiguration
+* <span style="color:red">Scenario-1 - Exploiting Private Registry via Misconfiguration (Customize)</span>
     * Scenario
     * Solution
     * Discussion
@@ -77,15 +80,15 @@
     * Scenario
     * Solution
     * Discussion
-* Scenario-3 - Testing for the sensitive configurations and secrets in Kubernetes cluster
+* <span style="color:red">Scenario-3 - Testing for the sensitive configurations and secrets in Kubernetes cluster</span>
     * Scenario
     * Solution
     * Discussion
-* Scenario-4 - Docker escape using Pod Volume Mounts to access the nodes and host systems
+* <span style="color:red">Scenario-4 - Docker escape using Pod Volume Mounts to access the nodes and host systems</span>
     * Scenario
     * Solution
     * Discussion
-* Scenario-5 - Attacking applications in different namespaces in Kubernetes cluster
+* <span style="color:red">Scenario-5 - Attacking applications in different namespaces in Kubernetes cluster</span>
     * Scenario
     * Solution
     * Discussion
@@ -93,6 +96,16 @@
     * Scenario
     * Solution
     * Discussion
+* <span style="color:red">Scenario-7 - RCE on Envoy via CVE-2019-18801 (Proposed)
+    * [Scenario](https://blog.envoyproxy.io/exploiting-an-envoy-heap-vulnerability-96173d41792)
+    * Solution
+    * Discussion
+* <span style="color:red">Scenario-8 - Istio/Envoy Path Traversal - CVE-2019-9901 (Proposed)
+    * Scenario
+    * Solution
+    * Discussion
+
+
 * Auditing Kubernetes Clusters with CIS Benchmarks using kube-bench
 * Kubernetes resources security scoring using kubesec.io
 * Kube-hunter to do analysis of the cluster for security concerns

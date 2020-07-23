@@ -10,6 +10,6 @@ This is bad, yes, but it can be worse for applications on the cloud as you can q
 
 ## Tips
 
-* Endpoint for your attack is `http://server-health.student-uniquename.cloudsec.training`. Replace `uniquename` with your unique name
+* Endpoint for your attack is `http://server-health.planetkesten.com`. Replace `uniquename` with your unique name
 * The login credentials for the application are `username: serveradmin` and `password: monitorworld`
 * Useful reference: [Google Instance Metadata](https://cloud.google.com/appengine/docs/standard/java/accessing-instance-metadata) `169.254.169.254`

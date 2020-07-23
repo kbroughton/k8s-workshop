@@ -69,6 +69,14 @@ docker logs -f pingcontainer
 docker run -d --name nginxalpine -p 7777:80 nginx:alpine
 ```
 
+
+<!--KB-->
+On VMWare default setup, nginx fails to expose the port. The following allows it. 
+Then curl localhost:80 from outside or inside the container.
+```bash
+docker run -d --name nginxalpine --rm --network host
+```
+
 * Accessing the container service from the host system using mapped port
 
 ```bash

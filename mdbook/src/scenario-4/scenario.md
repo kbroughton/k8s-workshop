@@ -10,5 +10,5 @@ Let's hack this box and see where we can go from here :)
 
 ## Tips
 
-* Endpoint for your attack is `http://connectivity-check.student-uniquename.cloudsec.training`. Replace `uniquename` with your unique name
+* Endpoint for your attack is `http://connectivity-check.planetkesten.com`. Replace `uniquename` with your unique name
 * Login to the application using `username: sysadmin` and `password: superpowers`

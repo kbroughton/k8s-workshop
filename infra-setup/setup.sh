@@ -1,26 +1,54 @@
 #!/bin/bash
 
-export STUDENTCLUSTERNAME='k8s-training-cluster'
+set -x
+
+export STUDENTCLUSTERNAME='develop-x-234400'
 export STUDENTREGION='us-central1'
+export STUDENTZONE='a'
 export STUDENTCLUSTER_MIN_NODES='2'
 export STUDENTCLUSTER_MAX_NODES='3'
-export STUDENTCLUSTER_VERSION='1.14.10-gke.36'
+export STUDENTCLUSTER_VERSION='1.14.10-gke.50'
+
+#trap '(read -p "[$BASH_SOURCE:$LINENO] $BASH_COMMAND?")' DEBUG
+
 
 if [ -z "$STUDENTPROJECTNAME" ]; then
   export STUDENTPROJECTNAME='<Add-Project-Name>'
 fi
-
 ## Set working directory
 cd `dirname $0`
 
 ## Cluster creation
 
-gcloud beta container --project "$STUDENTPROJECTNAME" clusters create "$STUDENTCLUSTERNAME" --zone "$STUDENTREGION-a" --no-enable-basic-auth --cluster-version $STUDENTCLUSTER_VERSION --machine-type "g1-small" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "50" --metadata flag=59a4c760306d682ca75d690bebb9db0e,disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --preemptible --num-nodes "2" --enable-stackdriver-kubernetes --no-enable-ip-alias --network "projects/$STUDENTPROJECTNAME/global/networks/default" --subnetwork "projects/$STUDENTPROJECTNAME/regions/$STUDENTREGION/subnetworks/default" --enable-autoscaling --min-nodes $STUDENTCLUSTER_MIN_NODES --max-nodes $STUDENTCLUSTER_MAX_NODES --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade --no-enable-autorepair --maintenance-window "18:30"
+cluster_type="${1}"
 
-gcloud compute addresses create $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
-export STUDENTCLUSTERSIP=$(gcloud compute addresses list --project=$STUDENTPROJECTNAME --filter "name=$STUDENTCLUSTERNAME-sip" | grep $STUDENTCLUSTERNAME-sip | awk '{print $2}')
+if [[ ${cluster_type} = "--kind" ]]; then
+	echo "Creating a kubernetes using kind: \"kind create cluster --config kindconf.yaml\""
+	#kind create cluster --name "$STUDENTCLUSTERNAME" --config kindconfig.yaml 
+	kind export kubeconfig
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.1/deploy/static/provider/cloud/deploy.yaml
 
-gcloud container clusters get-credentials $STUDENTCLUSTERNAME --zone $STUDENTREGION-a --project $STUDENTPROJECTNAME
+else
+	gcloud beta container --project "$STUDENTPROJECTNAME" clusters create "$STUDENTCLUSTERNAME" \
+	  --zone "$STUDENTREGION-a" --no-enable-basic-auth --cluster-version $STUDENTCLUSTER_VERSION \
+	  --machine-type "g1-small" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "50" \
+	  --metadata flag=59a4c760306d682ca75d690bebb9db0e,disable-legacy-endpoints=true \
+	  --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" \
+	  --preemptible --num-nodes "2" --enable-stackdriver-kubernetes --no-enable-ip-alias \
+	  --network "projects/$STUDENTPROJECTNAME/global/networks/default" \
+	  --subnetwork "projects/$STUDENTPROJECTNAME/regions/$STUDENTREGION/subnetworks/default" \
+	  --enable-autoscaling --min-nodes $STUDENTCLUSTER_MIN_NODES --max-nodes $STUDENTCLUSTER_MAX_NODES \
+	  --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade \
+	  --no-enable-autorepair --maintenance-window "18:30"
+
+	gcloud compute addresses create $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
+	export STUDENTCLUSTERSIP=$(gcloud compute addresses list --project=$STUDENTPROJECTNAME --filter "name=$STUDENTCLUSTERNAME-sip" | grep $STUDENTCLUSTERNAME-sip | awk '{print $2}')
+
+	gcloud container clusters get-credentials $STUDENTCLUSTERNAME --zone $STUDENTREGION-$STUDENTZONE --project $STUDENTPROJECTNAME
+
+
+fi
+
 
 ## Cluster setup
 
@@ -30,13 +58,18 @@ helm2 init --service-account tiller
 ### Wait for tiller pod to be ready
 sleep 60
 
-helm2 install --namespace kube-system --name nginx-ingress stable/nginx-ingress --set controller.service.externalTrafficPolicy=Local,controller.service.loadBalancerIP=$STUDENTCLUSTERSIP
+if [[ ${cluster_type} = "--kind" ]]; then
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.1/deploy/static/provider/cloud/deploy.yaml
+else
+	helm2 install --namespace kube-system --name nginx-ingress stable/nginx-ingress --set controller.service.externalTrafficPolicy=Local,controller.service.loadBalancerIP=$STUDENTCLUSTERSIP
+fi
 
 kubectl create secret docker-registry privateregistrycreds --docker-username test --docker-password test
 
 helm2 install --name mailbox-service Helm-Charts/mailbox-service/
 helm2 install --name connectivity-check Helm-Charts/connectivity-check/
 helm2 install --name server-health Helm-Charts/server-health/
+helm2 install --name server-health Helm-Charts/k8s-mdbook/
 
 kubectl apply -f code-base/code-base.yaml
 kubectl apply -f net-tools/net-tools.yaml
@@ -73,6 +106,11 @@ EOF
 cat > destroy.sh<<_EOF
 #!/bin/bash
 
-gcloud beta container --project "$STUDENTPROJECTNAME" clusters delete "$STUDENTCLUSTERNAME" --zone "$STUDENTREGION-a"
+gcloud beta container --project "$STUDENTPROJECTNAME" clusters delete "$STUDENTCLUSTERNAME" --zone "${STUDENTREGION}-${STUDENTZONE}"
 gcloud compute addresses delete $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
 _EOF
+
+
+echo "You will need to port forward to access the installed services by domain name"
+echo "sudo kubectl port-forward -n kube-system svc/nginx-ingress-controller 80:80"
+kubectl get ing -o json | jq -r '.items[0].spec[][].host'

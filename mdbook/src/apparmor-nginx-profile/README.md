@@ -37,4 +37,4 @@ bash
 ![lsm after nginx](images/lsm-after.png)
 
 
-* Have a look at `cat /opt/docker-nginx/docker-nignx-sample` file for the apparmor profile that was created using [bane](https://github.com/genuinetools/bane)
+* Have a look at `cat /opt/docker-nginx/docker-nginx-sample` file for the apparmor profile that was created using [bane](https://github.com/genuinetools/bane)

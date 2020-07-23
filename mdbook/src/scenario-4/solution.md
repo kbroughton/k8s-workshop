@@ -1,6 +1,6 @@
 # Docker escape using Pod Volume Mounts to access the node and host systems - Solution
 
-* Navigate to the application `http://connectivity-check.student-uniquename.cloudsec.training`
+* Navigate to the application `http://connectivity-check.planetkesten.com`
 
 * Login to the application using `username: sysadmin` and `password: superpowers`
 

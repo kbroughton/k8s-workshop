@@ -27,7 +27,11 @@ The courseware is meant to introduce participants to container and cluster manag
 * Laptop should support hardware-based virtualization
   * If your laptop can run a 64-bit virtual machine in Oracle VirtualBox it should work
 * Network Connectivity or USB Ports for copying data
-* Trainer will provide the **VM and dedicated Kubernetes cluster configuration** for each student with administrative access to have a hand-on experience during the training
+* (Original) Trainer will provide the **VM and dedicated Kubernetes cluster configuration** for each student with administrative access to have a hand-on experience during the training
+* Users should test the ability to install the following prior to the day of training:
+   * [go](https://golang.org/doc/install)
+   * [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+   * kubectl
 
 ## Prerequisites
 

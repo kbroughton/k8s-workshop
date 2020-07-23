@@ -29,3 +29,8 @@ cat /etc/shadow
 ![Sysdig Faclo Scenario](images/sysdig-falco-scenario.png)
 
 [Sysdig Falco: Container security monitoring](https://www.katacoda.com/mateobur/scenarios/falco)
+
+
+## IPV4 Firewall Evasion
+
+"TIL that if you want to evade IPv4 firewall rules or logs you can pad an address with ::ffff: and it’ll be handled by IPv6 sockets; even if your PC only uses IPv4, the victim and intermediaries will treat it as a IPv6 at many critical junctures. plz don’t use this for evil, ok?" - @da5ch0

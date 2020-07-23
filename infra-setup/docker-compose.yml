@@ -1,0 +1,15 @@
+version: "3"
+services:
+  student:
+   image: kbroughton/student
+   # Comment the volumes out if you lack the permissions to map volumes
+   # or modify your Docker App settings to allow the paths to be shared.
+   volumes:
+    - .:/data
+    - ~/.kube:/root/.kube
+   command: ["/bin/bash", "-l", "-c", "tail", "-f", "/dev/null"] 
+   entrypoint: ""
+   tty: true   
+   working_dir: /data
+   ports:
+   - 8090:80 

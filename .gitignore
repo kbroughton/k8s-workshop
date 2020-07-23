@@ -2,6 +2,10 @@ gitbook/_book/*
 *.pdf
 *.epub
 *.mobi
+*.privatekey.json
+
+*.tar.gz
+linux-amd64
 
 infra-setup/k8s-training-kubeconfig
 infra-setup/destroy.sh

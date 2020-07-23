@@ -6,7 +6,7 @@
     * [Disclaimer](intro/disclaimer.md)
     * [Agenda](intro/agenda.md)
 
-* [Environment Setup](environment-setup/README.md)
+* [`*`Environment Setup](environment-setup/README.md)
     * [Importing Virtual Machines](environment-setup/importing-virtualmachines.md)
     * [SSH into machines from your host](environment-setup/ssh-into-machine.md)
     * [Common troubleshooting steps](environment-setup/common-troublehshooting-steps.md)
@@ -23,7 +23,7 @@
     * [docker swarm](advanced-concepts/docker-swarm.md)
     * [Portainer](advanced-concepts/portainer.md)
 
-* [Attacking Insecure Volume Mounts](attacking-insecure-volume-mounts/README.md)
+* [`*`Attacking Insecure Volume Mounts](attacking-insecure-volume-mounts/README.md)
     * [Scenario](attacking-insecure-volume-mounts/scenario.md)
     * [Solution](attacking-insecure-volume-mounts/solution.md)
 
@@ -54,7 +54,7 @@
     * [Docker runtime endpoints](auditing-docker-containers/docker-runtime-endpoints.md)
     * [Docker registries](attacking-auditing-docker-registry/docker-registries.md)
 
-* [Attacking container capabilities](attacking-containers-capabilities/README.md)
+* [`*`Attacking container capabilities](attacking-containers-capabilities/README.md)
     * [Scenario](attacking-containers-capabilities/scenario.md)
     * [Solution](attacking-containers-capabilities/solution.md)
 
@@ -75,8 +75,10 @@
     * [Docker Events](docker-events/README.md)
     * [Sysdig Faclo](sysdig-faclo/README.md)
 
-* [Kubernetes Environment Setup](getting-started/README.md)
+* [`*`Kubernetes Environment Setup](getting-started/README.md)
+    * [Windows Instructions](getting-started/windows-instructions.md)
     * [Cluster Setup](getting-started/kubernetes-cluster-setup.md)
+    * [(optional) Kind Stack](getting-started/kind-stack.md)
     * [Import VM](getting-started/import-vm.md)
     * [Configure kubectl](getting-started/configure-kubectl.md)
     * [Vulnerable Apps](getting-started/vuln-apps.md)
@@ -92,7 +94,7 @@
     * [Using yaml manifest](deploy-app/using-yaml.md)
     * [Using helm chart](deploy-app/using-helm.md)
 
-* [Scenario-1 - Exploiting Private Registry via Misconfiguration](scenario-1/README.md)
+* [`*`Scenario-1 - Exploiting Private Registry via Misconfiguration](scenario-1/README.md)
     * [Scenario](scenario-1/scenario.md)
     * [Solution](scenario-1/solution.md)
     * [Discussion](scenario-1/discussion.md)
@@ -102,12 +104,12 @@
     * [Solution](scenario-2/solution.md)
     * [Discussion](scenario-2/discussion.md)
 
-* [Scenario-3 - Testing for the sensitive configurations and secrets in Kubernetes cluster](scenario-3/README.md)
+* [`*`Scenario-3 - Testing for the sensitive configurations and secrets in Kubernetes cluster](scenario-3/README.md)
     * [Scenario](scenario-3/scenario.md)
     * [Solution](scenario-3/solution.md)
     * [Discussion](scenario-3/discussion.md)
 
-* [Scenario-4 - Docker escape using Pod Volume Mounts to access the nodes and host systems](scenario-4/README.md)
+* [`*`Scenario-4 - Docker escape using Pod Volume Mounts to access the nodes and host systems](scenario-4/README.md)
     * [Scenario](scenario-4/scenario.md)
     * [Solution](scenario-4/solution.md)
     * [Discussion](scenario-4/discussion.md)

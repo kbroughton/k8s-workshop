@@ -19,6 +19,8 @@ The `checksums` are available at `http://www.mediafire.com/file/6xp3c7voy60zn1e/
 
 ## Student Machine (docker-student.ova)
 
+### VirtualBox
+
 * Open VirtualBox, and select `File` -> `Import Appliance` from the top menu
 
 ![Importing student ova](images/import-ova.png)
@@ -34,6 +36,47 @@ The `checksums` are available at `http://www.mediafire.com/file/6xp3c7voy60zn1e/
 * Now we can see that ova file is importing
 
 ![processing](images/processing.png)
+
+### VMWare
+
+* Follow the above instructions with slight modifications. This has only been tested on VMWare Fusion 11.5.
+
+* Upon import, you receive a warning "this ovf doesn't meet standards." Click "retry".
+
+* With VMWare you can't force recreate a random MAC addr, so first boot machine.
+Then turn off and [remove the following lines](https://kabri.uk/2008/07/16/force-vmware-to-generate-a-new-mac-address/) for each machine vmx file. On a Mac, this is located at`~/Virtual\ Machines.localized/docker-student.vmwarevm/docker-student.vmx`
+
+```bash
+
+ethernet0.addressType
+uuid.location =
+uuid.bios =
+ethernet0.generatedAddress =
+ethernet0.generatedAddressOffset =
+```
+
+* Modify /etc/rc.local dhclient line. Virtualbox uses `enp0s8` as a default NIC. You probably want `ens33`
+for VMWare Fusion. Check for network devices which are down (you want these ones) using
+`ip link show`. Then run something like the following
+`
+sudo sed -i 's|enp0s8|ens33|' /etc/update-motd.d/98-reboot-required
+sudo dhclient ens33
+`
+
+* Check connectivity from the VMWare machine with `ping 8.8.8.8`.
+
+* Reboot the machine
+
+* Repeat for `~/Virtual\ Machines.localized/docker-ctf.vmwarevm/docker-ctf.vmx`
+
+### Logging In
+
+* You may want to start by adding the following to your /etc/hosts (adjusting ips)
+
+```
+ctf 192.168.64.128
+student 192.168.64.129
+```
 
 * Use following credentials for `student` VM login
 

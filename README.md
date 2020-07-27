@@ -1,12 +1,18 @@
-# Attacking and Auditing Docker Containers and Kubernetes Clusters
+# Attacking Kubernetes Workshop Presented By Praetorian
 
-![Attacking and Auditing Docker Containers and Kubernetes Clusters](github-images/k8s-docker-github-background.png)
+![Attacking and Auditing Docker Containers and Kubernetes Clusters](github-images/praetorian-cover.png)
 
 ## Introduction
 
+Praetorian has adapted the original training materials developed by Appsecco
+and customized them to the most relevant attacks for the customer. The original
+training was 3 days. As the workshop is intended to be 1 day, we will leave
+the Docker labs as exercises for the reader and will focus on the existing
+classic k8s attacks as well as adding a few custom attacks relevant to the customer.
+
 The world is changing right in front of our eyes. The way we have been learning is going to be radically transformed by the time we all have eradicated the COVID19 from our lives.
 
-While we figure out what is the best way to transfer our knowledge to you, we realise that by the time world is out of the lockdown, a docker and kubernetes focussed pentesting training is likely going to be obsolete in parts.
+While we figure out what is the best way to transfer our knowledge to you, we realise that by the time world is out of the lockdown, a docker and kubernetes focused pentesting training is likely going to be obsolete in parts.
 
 So as a contribution towards the greater security community, we decided to open source the complete training.
 
@@ -33,7 +39,7 @@ The training requires following components
 
 1. Lab manual (Documentation)
 2. Docker Lab virtual machines
-3. Intentionally vulnerable Kubernetes cluster (Google Cloud)
+3.  <span style="color:red">Intentionally vulnerable Kubernetes cluster (Google Cloud)</span>
 
 | Content       | Description                                                                 |
 | ------------- | --------------------------------------------------------------------------- |

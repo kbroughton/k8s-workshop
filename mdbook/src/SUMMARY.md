@@ -6,7 +6,7 @@
     * [Disclaimer](intro/disclaimer.md)
     * [Agenda](intro/agenda.md)
 
-* [Environment Setup](environment-setup/README.md)
+* [`*`Environment Setup](environment-setup/README.md)
     * [Importing Virtual Machines](environment-setup/importing-virtualmachines.md)
     * [SSH into machines from your host](environment-setup/ssh-into-machine.md)
     * [Common troubleshooting steps](environment-setup/common-troublehshooting-steps.md)
@@ -23,7 +23,7 @@
     * [docker swarm](advanced-concepts/docker-swarm.md)
     * [Portainer](advanced-concepts/portainer.md)
 
-* [Attacking Insecure Volume Mounts](attacking-insecure-volume-mounts/README.md)
+* [`*`Attacking Insecure Volume Mounts](attacking-insecure-volume-mounts/README.md)
     * [Scenario](attacking-insecure-volume-mounts/scenario.md)
     * [Solution](attacking-insecure-volume-mounts/solution.md)
 
@@ -54,7 +54,7 @@
     * [Docker runtime endpoints](auditing-docker-containers/docker-runtime-endpoints.md)
     * [Docker registries](attacking-auditing-docker-registry/docker-registries.md)
 
-* [Attacking container capabilities](attacking-containers-capabilities/README.md)
+* [`*`Attacking container capabilities](attacking-containers-capabilities/README.md)
     * [Scenario](attacking-containers-capabilities/scenario.md)
     * [Solution](attacking-containers-capabilities/solution.md)
 

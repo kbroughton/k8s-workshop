@@ -67,7 +67,16 @@ sudo dhclient ens33
 
 * Reboot the machine
 
+* Repeat for `~/Virtual\ Machines.localized/docker-ctf.vmwarevm/docker-ctf.vmx`
+
 ### Logging In
+
+* You may want to start by adding the following to your /etc/hosts (adjusting ips)
+
+```
+ctf 192.168.64.128
+student 192.168.64.129
+```
 
 * Use following credentials for `student` VM login
 

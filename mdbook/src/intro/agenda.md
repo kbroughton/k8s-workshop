@@ -7,7 +7,8 @@
     * About the trainer
     * Disclaimer
     * Agenda
-* <span style="color:red">Environment Setup</span>
+* <span style="color:red">Environment Setup - PLEASE COMPLETE THE INSTALL THE DAY PRIOR TO CLASS</span>
+    * Installing the go, kind, kubectl stack
     * Importing Virtual Machines
     * SSH into machines from your host
     * Common troubleshooting steps

@@ -102,3 +102,4 @@ cat > destroy.sh<<_EOF
 gcloud beta container --project "$STUDENTPROJECTNAME" clusters delete "$STUDENTCLUSTERNAME" --zone "$STUDENTREGION-a"
 gcloud compute addresses delete $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
 _EOF
+

@@ -6,7 +6,8 @@ In any case, as an attacker you know that the application is deployed using dock
 
 ## Tips
 
-* Endpoint for your attack is `http://mailbox-service.student-uniquename.cloudsec.training`. Replace `uniquename` with your unique name
+* Endpoint for your attack is \
+  `http://mailbox-service.oss-k8s-security.cloudsec.training/index.php`
 * The login credentials for the application are `username: bob` and `password: bobmailbox`
 * `README.md` exists
-* The app is vulnerable to `LFI`
+* The app is vulnerable to Local File Injection `LFI`

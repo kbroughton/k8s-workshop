@@ -75,7 +75,7 @@
     * [Docker Events](docker-events/README.md)
     * [Sysdig Faclo](sysdig-faclo/README.md)
 
-* [Kubernetes Environment Setup](getting-started/README.md)
+* [`*`Kubernetes Environment Setup](getting-started/README.md)
     * [Cluster Setup](getting-started/kubernetes-cluster-setup.md)
     * [Import VM](getting-started/import-vm.md)
     * [Configure kubectl](getting-started/configure-kubectl.md)
@@ -92,7 +92,7 @@
     * [Using yaml manifest](deploy-app/using-yaml.md)
     * [Using helm chart](deploy-app/using-helm.md)
 
-* [Scenario-1 - Exploiting Private Registry via Misconfiguration](scenario-1/README.md)
+* [`*`Scenario-1 - Exploiting Private Registry via Misconfiguration](scenario-1/README.md)
     * [Scenario](scenario-1/scenario.md)
     * [Solution](scenario-1/solution.md)
     * [Discussion](scenario-1/discussion.md)
@@ -107,7 +107,7 @@
     * [Solution](scenario-3/solution.md)
     * [Discussion](scenario-3/discussion.md)
 
-* [Scenario-4 - Docker escape using Pod Volume Mounts to access the nodes and host systems](scenario-4/README.md)
+* [`*`Scenario-4 - Docker escape using Pod Volume Mounts to access the nodes and host systems](scenario-4/README.md)
     * [Scenario](scenario-4/scenario.md)
     * [Solution](scenario-4/solution.md)
     * [Discussion](scenario-4/discussion.md)

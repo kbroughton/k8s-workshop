@@ -1,0 +1,13 @@
+version: "3"
+services:
+  student:
+   image: student
+   volumes:
+    - ${PWD}:/data
+    - ${HOME}/.kube:/root/.kube
+   command: ["/bin/bash", "-l", "-c", "tail", "-f", "/dev/null"] 
+   entrypoint: ""
+   tty: true        # docker run -t
+   network_mode: "host"
+   ports:
+    - 8090:80 

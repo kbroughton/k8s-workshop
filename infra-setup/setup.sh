@@ -6,6 +6,8 @@ export STUDENTCLUSTER_MIN_NODES='2'
 export STUDENTCLUSTER_MAX_NODES='3'
 export STUDENTCLUSTER_VERSION='1.14.10-gke.36'
 
+set -x
+
 if [ -z "$STUDENTPROJECTNAME" ]; then
   export STUDENTPROJECTNAME='<Add-Project-Name>'
 fi
@@ -18,9 +20,10 @@ cd `dirname $0`
 cluster_type="${1}"
 
 if [[ ${cluster_type} = "--kind" ]]; then
-	echo "Creating a kubernetes using kind: \"kind create cluster\" " # --config kindconf.yaml
-	kind create cluster --name "$STUDENTCLUSTERNAME" #--config kindconfig.yaml
+	echo "Creating a kubernetes using kind: \"kind create cluster --config kindconf.yaml\""
+	#kind create cluster --name "$STUDENTCLUSTERNAME" --config kindconfig.yaml 
 	kind export kubeconfig
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.1/deploy/static/provider/cloud/deploy.yaml
 
 else
 	gcloud beta container --project "$STUDENTPROJECTNAME" clusters create "$STUDENTCLUSTERNAME" \

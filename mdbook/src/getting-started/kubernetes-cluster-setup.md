@@ -19,7 +19,8 @@ The following tools are needed. They are installed in the Student VM or the dock
 
 ## Kind
 
-Install [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+Install [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) natively (currently kind create inside docker-compose student container fails)  
+`kind create cluster`
 
 ## Google Cloud
 We will setup a Kubernetes cluster in Google Cloud. For this, you will require:

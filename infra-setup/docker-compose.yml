@@ -9,5 +9,6 @@ services:
    entrypoint: ""
    tty: true        # docker run -t
    network_mode: "host"
-   ports:
-    - 8090:80 
+   working_dir: /data
+#   ports:
+#    - 8090:80 

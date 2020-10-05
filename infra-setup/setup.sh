@@ -1,17 +1,20 @@
 #!/bin/bash
 
-export STUDENTCLUSTERNAME='k8s-training-cluster'
+set -x
+
+export STUDENTCLUSTERNAME='develop-x-234400'
 export STUDENTREGION='us-central1'
+export STUDENTZONE='a'
 export STUDENTCLUSTER_MIN_NODES='2'
 export STUDENTCLUSTER_MAX_NODES='3'
-export STUDENTCLUSTER_VERSION='1.14.10-gke.36'
+export STUDENTCLUSTER_VERSION='1.14.10-gke.50'
 
-set -x
+trap '(read -p "[$BASH_SOURCE:$LINENO] $BASH_COMMAND?")' DEBUG
+
 
 if [ -z "$STUDENTPROJECTNAME" ]; then
   export STUDENTPROJECTNAME='<Add-Project-Name>'
 fi
-
 ## Set working directory
 cd `dirname $0`
 
@@ -41,7 +44,7 @@ else
 	gcloud compute addresses create $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
 	export STUDENTCLUSTERSIP=$(gcloud compute addresses list --project=$STUDENTPROJECTNAME --filter "name=$STUDENTCLUSTERNAME-sip" | grep $STUDENTCLUSTERNAME-sip | awk '{print $2}')
 
-	gcloud container clusters get-credentials $STUDENTCLUSTERNAME --zone $STUDENTREGION-a --project $STUDENTPROJECTNAME
+	gcloud container clusters get-credentials $STUDENTCLUSTERNAME --zone $STUDENTREGION-$ZONE --project $STUDENTPROJECTNAME
 
 
 fi
@@ -56,9 +59,9 @@ helm2 init --service-account tiller
 sleep 60
 
 if [[ ${cluster_type} = "--kind" ]]; then
-	helm2 install --namespace kube-system --name nginx-ingress stable/nginx-ingress --set controller.service.externalTrafficPolicy=Local,controller.service.loadBalancerIP=$STUDENTCLUSTERSIP
-else
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.1/deploy/static/provider/cloud/deploy.yaml
+else
+	helm2 install --namespace kube-system --name nginx-ingress stable/nginx-ingress --set controller.service.externalTrafficPolicy=Local,controller.service.loadBalancerIP=$STUDENTCLUSTERSIP
 fi
 
 kubectl create secret docker-registry privateregistrycreds --docker-username test --docker-password test
@@ -102,7 +105,7 @@ EOF
 cat > destroy.sh<<_EOF
 #!/bin/bash
 
-gcloud beta container --project "$STUDENTPROJECTNAME" clusters delete "$STUDENTCLUSTERNAME" --zone "$STUDENTREGION-a"
+gcloud beta container --project "$STUDENTPROJECTNAME" clusters delete "$STUDENTCLUSTERNAME" --zone "${STUDENTREGION}-${STUDENTZONE}"
 gcloud compute addresses delete $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
 _EOF
 

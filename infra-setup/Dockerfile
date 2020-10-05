@@ -16,5 +16,7 @@ RUN  tar -zxvf helm-${HELM_VERSION}-linux-amd64.tar.gz \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl
 
-ENTRYPOINT ["/bin/ping","-c","3"]
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-sdk -y
+
+#ENTRYPOINT ["/bin/ping","-c","3"]
 CMD ["/bin/bash", "-l", "-c", "tail", "-f", "/dev/null"]

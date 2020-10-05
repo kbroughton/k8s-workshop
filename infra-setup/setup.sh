@@ -44,7 +44,7 @@ else
 	gcloud compute addresses create $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
 	export STUDENTCLUSTERSIP=$(gcloud compute addresses list --project=$STUDENTPROJECTNAME --filter "name=$STUDENTCLUSTERNAME-sip" | grep $STUDENTCLUSTERNAME-sip | awk '{print $2}')
 
-	gcloud container clusters get-credentials $STUDENTCLUSTERNAME --zone $STUDENTREGION-$ZONE --project $STUDENTPROJECTNAME
+	gcloud container clusters get-credentials $STUDENTCLUSTERNAME --zone $STUDENTREGION-$STUDENTZONE --project $STUDENTPROJECTNAME
 
 
 fi

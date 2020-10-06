@@ -1,4 +1,10 @@
-# Installing the go, kind, kubectl stack
+# (optional) Kind Stack
+
+Eventually we want to port all exercises to a kind stack which can be run locally.
+Source and docker images from the VM images would need to be ported. There is
+also currently an issue with port forwarding on windows which must be resolved.
+
+## Installing the go, kind, kubectl stack
 
 
 * [go](https://golang.org/doc/install)
@@ -16,4 +22,3 @@ Here are the jobs each component performs.
 * kubectl: the command line util to talk to your cluster.
 
 Typically, kubeadm will be wrapped with other tools such as [kubespray](https://github.com/kubernetes-sigs/kubespray)
-

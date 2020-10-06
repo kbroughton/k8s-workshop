@@ -77,6 +77,7 @@
 
 * [`*`Kubernetes Environment Setup](getting-started/README.md)
     * [Cluster Setup](getting-started/kubernetes-cluster-setup.md)
+    * [(optional) Kind Stack](getting-started/kind-stack.md)
     * [Import VM](getting-started/import-vm.md)
     * [Configure kubectl](getting-started/configure-kubectl.md)
     * [Vulnerable Apps](getting-started/vuln-apps.md)

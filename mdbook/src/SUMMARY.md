@@ -76,6 +76,7 @@
     * [Sysdig Faclo](sysdig-faclo/README.md)
 
 * [`*`Kubernetes Environment Setup](getting-started/README.md)
+    * [Windows Instructions](getting-started/windows-instructions.md)
     * [Cluster Setup](getting-started/kubernetes-cluster-setup.md)
     * [Import VM](getting-started/import-vm.md)
     * [Configure kubectl](getting-started/configure-kubectl.md)

@@ -7,24 +7,31 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: mailbox-service.oss-k8s-security.cloudsec.training
+  - host: mailbox-service.planetkesten.com
     http:
       paths:
       - path: /
         backend:
           serviceName: mailbox-service
           servicePort: 80
-  - host: server-health.oss-k8s-security.cloudsec.training
+  - host: server-health.planetkesten.com
     http:
       paths:
       - path: /
         backend:
           serviceName: server-health
           servicePort: 80
-  - host: connectivity-check.oss-k8s-security.cloudsec.training
+  - host: connectivity-check.planetkesten.com
     http:
       paths:
       - path: /
         backend:
           serviceName: connectivity-check
+          servicePort: 80
+  - host: k8s-mdbook.planetkesten.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: k8s-mdbook
           servicePort: 80

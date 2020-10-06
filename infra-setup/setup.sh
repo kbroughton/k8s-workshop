@@ -69,6 +69,7 @@ kubectl create secret docker-registry privateregistrycreds --docker-username tes
 helm2 install --name mailbox-service Helm-Charts/mailbox-service/
 helm2 install --name connectivity-check Helm-Charts/connectivity-check/
 helm2 install --name server-health Helm-Charts/server-health/
+helm2 install --name server-health Helm-Charts/k8s-mdbook/
 
 kubectl apply -f code-base/code-base.yaml
 kubectl apply -f net-tools/net-tools.yaml
@@ -109,3 +110,7 @@ gcloud beta container --project "$STUDENTPROJECTNAME" clusters delete "$STUDENTC
 gcloud compute addresses delete $STUDENTCLUSTERNAME-sip --region $STUDENTREGION --project $STUDENTPROJECTNAME
 _EOF
 
+
+echo "You will need to port forward to access the installed services by domain name"
+echo "sudo kubectl port-forward -n kube-system svc/nginx-ingress-controller 80:80"
+kubectl get ing -o json | jq -r '.items[0].spec[][].host'

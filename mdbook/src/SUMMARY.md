@@ -104,7 +104,7 @@
     * [Solution](scenario-2/solution.md)
     * [Discussion](scenario-2/discussion.md)
 
-* [Scenario-3 - Testing for the sensitive configurations and secrets in Kubernetes cluster](scenario-3/README.md)
+* [`*`Scenario-3 - Testing for the sensitive configurations and secrets in Kubernetes cluster](scenario-3/README.md)
     * [Scenario](scenario-3/scenario.md)
     * [Solution](scenario-3/solution.md)
     * [Discussion](scenario-3/discussion.md)

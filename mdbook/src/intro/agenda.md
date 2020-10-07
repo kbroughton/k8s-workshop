@@ -3,6 +3,17 @@
 <span style="color:red">Red</span> - Covered in class. We will replace some based on Phase II attacks.<br>
 <span style="color:orange">Orange</span> - Assumed knowledge. May cover a few on request.
 
+* 10:00 am Setup and Overview
+* 11:00 am - 11:15 coffee break
+* 11:45 am - VM environment: reverse shell
+* 12:30 pm - Lunch
+* 1:00 pm - GKE cluster: mailbox-service
+* 2:00 pm - coffee break
+* 2:15 pm - GKE cluster: conn
+* 3:15 pm - coffee break
+* 3:30 pm - GKE 
+* 4:45 pm - End
+
 * Introduction
     * About the trainer
     * Disclaimer

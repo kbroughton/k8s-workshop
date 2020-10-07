@@ -3,9 +3,9 @@
 Each student cluster has intentionally vulnerable apps running which will be used during lab scenarios. The apps are available in following URLs. For Kind deployments, these are hosted on localhost.
 
 ```
-http://mailbox-service.oss-k8s-security.cloudsec.training
-http://server-health.oss-k8s-security.cloudsec.training
-http://connectivity-check.oss-k8s-security.cloudsec.training
+http://mailbox-service.planetkesten.com
+http://server-health.planetkesten.com
+http://connectivity-check.planetkesten.com
 ```
 
 **NOTE:** All attacks described in this document must be executed from Kubernetes Student VM or the docker-compose

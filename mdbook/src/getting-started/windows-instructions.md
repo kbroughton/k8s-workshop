@@ -72,7 +72,9 @@ Execute the following steps in order:
 
 1. Change setup.sh line ending to LF. This can be done with Notepad++, for example.
 2. Run `kind create cluster`. This will take a few minutes. Make sure you have at least 5GB of disk space available.
-3. Exec into the infra-setup (docker-compose) container. `docker ps | grep student`. `docker exec -it $CONTAINER_ID bash`.
+3. Exec into the infra-setup (docker-compose) container.  
+   `docker ps | grep student`  
+   `docker exec -it $CONTAINER_ID bash`
 
 * On Kitematic, this can be done by clicking the exec button.
 ![](images/kitematic_exec.png) 
@@ -82,15 +84,23 @@ Execute the following steps in order:
 4. Run `./setup.sh --kind`
 5. Run `kubectl apply -f apps-ingress/apps-ingress.yaml`. It should return either unchanged or created. If it returns an InternalServer error, wait a few minutes and try again.
 
+## Validation
+
 To verify everything worked, run `kubectl get pods`. This should return the pods status as Running or ContainerCreating.
 
 If your pods get stuck on Pending, it's most likely a lack of resources. You need to delete both containers, close Kitematic or Docker Desktop, increase the CPU and RAM limit and re-do all the steps.
 
 ## Expose Vulnerable Apps
 
+The instructor, or whomever ran the infra-setup/setup.sh script to create the cluster, should have supplied you 
+with a k8s-training-config file. This has the same format as what you may have in `~/kube/config` but with
+credentials to target the training k8s cluster.
+
 If running from within the "student" container, add the option "--address 0.0.0.0" after "port-forward" in the line below.
 
 * Run `kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 80:80`
-* Browse to localhost to see the vulnerable apps.
+* Use your regular browser to view the services.
+   * mailbox-service.planetkesten.com
+   * k8s-mdbook.planetkesten.com
 
 If your connection stops working, check that the port-forward shell is still running. You may have to run it again.

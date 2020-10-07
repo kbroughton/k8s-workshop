@@ -7,7 +7,7 @@ In any case, as an attacker you know that the application is deployed using dock
 ## Tips
 
 * Endpoint for your attack is \
-  `http://mailbox-service.oss-k8s-security.cloudsec.training/index.php`
+  `http://mailbox-service.planetkesten.com/index.php`
 * The login credentials for the application are `username: bob` and `password: bobmailbox`
 * `README.md` exists
 * The app is vulnerable to Local File Injection `LFI`

@@ -1,14 +1,15 @@
 version: "3"
 services:
   student:
-   image: student
+   image: kbroughton/student
+   # Comment the volumes out if you lack the permissions to map volumes
+   # or modify your Docker App settings to allow the paths to be shared.
    volumes:
-    - ${PWD}:/data
-    - ${HOME}/.kube:/root/.kube
+    - .:/data
+    - ~/.kube:/root/.kube
    command: ["/bin/bash", "-l", "-c", "tail", "-f", "/dev/null"] 
    entrypoint: ""
-   tty: true        # docker run -t
-   network_mode: "host"
+   tty: true   
    working_dir: /data
-#   ports:
-#    - 8090:80 
+   ports:
+   - 8090:80 

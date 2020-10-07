@@ -1,11 +1,8 @@
 FROM google/cloud-sdk:slim
 
-
-
 RUN git config --system credential.'https://source.developers.google.com'.helper gcloud.sh
 
 ENV HELM_VERSION=v2.16.12
-#https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz
 
 RUN  apt-get update \
     && apt-get install -y wget curl
@@ -21,6 +18,4 @@ RUN  tar -zxvf helm-${HELM_VERSION}-linux-amd64.tar.gz \
     && mv ./kubectl /usr/local/bin/kubectl
 
 
-
-#ENTRYPOINT ["/bin/ping","-c","3"]
 CMD ["/bin/bash", "-l", "-c", "tail", "-f", "/dev/null"]

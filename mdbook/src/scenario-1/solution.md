@@ -1,6 +1,6 @@
 # Exploiting Private Registry via Misconfiguration - Solution
 
-* Navigate to the application `http://mailbox-service.student-uniquename.cloudsec.training`
+* Navigate to the application `http://mailbox-service.planetkesten.com`
 
 * Login to the application using `username: bob` and `password: bobmailbox`
 
@@ -50,7 +50,7 @@ cat index.js
 * Now you can see that we have got the `NASA_DEMO_API_KEY` which is hard coded in the container image
 
 
-* (Optional) Now lets gain persistence and spread through the company. 
+## (Optional) Now lets gain persistence and spread through the company. 
 
 The ability to push to arbitrary repositories
 is a company ending event. It bypasses all the gating checks between environments and offers complete 

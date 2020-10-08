@@ -1,6 +1,6 @@
 # Attacking Kubernetes cluster Metadata using application SSRF vulnerability - Solution
 
-* Navigate to the application `http://server-health.student-uniquename.cloudsec.training`
+* Navigate to the application `http://server-health.planetkesten.com`
 
 * Login to the application using `username: serveradmin` and `password: monitorworld`
 

@@ -19,7 +19,7 @@ jobs:
         version: '276.0.0'
         service_account_email: ${{ secrets.GCP_SA_EMAIL }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
-    - run: gsutil -m rsync -d -c -r public gs://my-gcs-bucket
+    - run: gsutil -m rsync -d -c -r mdbook/book gs://www.planetkesten.com/k8s-workbook/
     - run: gsutil -m setmeta -h "Cache-Control:public, max-age=3600" gs://www.planetkesten.com/**/*.html
     - run: gsutil -m setmeta -h "Cache-Control:public, max-age=31536000" gs://www.planetkesten.com/**/*.js
     - run: gsutil -m setmeta -h "Cache-Control:public, max-age=31536000" gs://www.planetkesten.com/**/*.css

@@ -3,9 +3,9 @@
 Each student cluster has intentionally vulnerable apps running which will be used during lab scenarios. The apps are available in following URLs. For Kind deployments, these are hosted on localhost.
 
 ```
-http://mailbox-service.planetkesten.com
-http://server-health.planetkesten.com
-http://connectivity-check.planetkesten.com
+http://mailbox-service.oss-k8s-security.cloudsec.training
+http://server-health.oss-k8s-security.cloudsec.training
+http://connectivity-check.oss-k8s-security.cloudsec.training
 ```
 
 **NOTE:** All attacks described in this document must be executed from Kubernetes Student VM or the docker-compose
@@ -56,11 +56,11 @@ kubectl port-forward -n kube-system --address 0.0.0.0 svc/nginx-ingress-controll
 
 ## Verify ports mapped correctly in the browser
 
-Now when you point your browser running natively on the laptop to http://mailbox-service.planetkesten.com:8090 the following happens.
-* The domain `mailbox-service.planetkesten.com` is resolved to 127.0.0.1
+Now when you point your browser running natively on the laptop to http://mailbox-service.oss-k8s-security.cloudsec.training:8090 the following happens.
+* The domain `mailbox-service.oss-k8s-security.cloudsec.training` is resolved to 127.0.0.1
 * The browser sends an HTTP request to 127.0.0.1:8090 which is forwarded to $STUDENTVMIP:80 via the ssh tunnel
 * The kube port-forward proxy is listening on all interfaces on port 80 and forwarding to the Kube API server
-* The host header sent to the Kube API server is `mailbox-service.planetkesten.com` so the kube-proxy knows
+* The host header sent to the Kube API server is `mailbox-service.oss-k8s-security.cloudsec.training` so the kube-proxy knows
 how to route it to the correct pod `mailbox-service` as defined in the `app-ingress.yaml` file.
 
 

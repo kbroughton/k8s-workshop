@@ -1,6 +1,6 @@
 # Attacking Kubernetes Workshop Presented By Praetorian
 
-![Attacking and Auditing Docker Containers and Kubernetes Clusters](github-images/praetorian-cover.png)
+![Attacking and Auditing Docker Containers and Kubernetes Clusters](github-images/k8s-docker-github-background.png)
 
 ## Introduction
 
@@ -9,6 +9,8 @@ and customized them to the most relevant attacks for the customer. The original
 training was 3 days. As the workshop is intended to be 1 day, we will leave
 the Docker labs as exercises for the reader and will focus on the existing
 classic k8s attacks as well as adding a few custom attacks relevant to the customer.
+
+------------------
 
 The world is changing right in front of our eyes. The way we have been learning is going to be radically transformed by the time we all have eradicated the COVID19 from our lives.
 

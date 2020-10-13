@@ -100,7 +100,7 @@ If running from within the "student" container, add the option "--address 0.0.0.
 
 * Run `kubectl port-forward -n ingress-nginx svc/ingress-nginx-controller 80:80`
 * Use your regular browser to view the services.
-   * mailbox-service.planetkesten.com
-   * k8s-mdbook.planetkesten.com
+   * mailbox-service.oss-k8s-security.cloudsec.training
+   * k8s-mdbook.oss-k8s-security.cloudsec.training
 
 If your connection stops working, check that the port-forward shell is still running. You may have to run it again.

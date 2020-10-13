@@ -1,6 +1,6 @@
 # Exploiting Private Registry via Misconfiguration - Solution
 
-* Navigate to the application `http://mailbox-service.planetkesten.com`
+* Navigate to the application `http://mailbox-service.oss-k8s-security.cloudsec.training`
 
 * Login to the application using `username: bob` and `password: bobmailbox`
 

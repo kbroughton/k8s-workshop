@@ -9,3 +9,7 @@ linux-amd64
 
 infra-setup/k8s-training-kubeconfig
 infra-setup/destroy.sh
+
+!infra-setup//static-website/terraform/.terraform
+!infra-setup/static-website//terraform/terraform.tfvars
+!infra-setup/static-website//github-storage-push.json
